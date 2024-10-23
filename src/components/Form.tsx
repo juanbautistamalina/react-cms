@@ -1,5 +1,3 @@
-import { FormEvent, RefObject, useRef } from "react";
-
 type User = {
   name: string,
   lastname: string,
@@ -8,13 +6,12 @@ type User = {
 
 type Props = {
   user: User
-  onSubmit: (e: FormEvent) => void,
   setUser: (user: User) => void
 };
 
-function Form({user, onSubmit, setUser}: Props) {
+function Form({user, setUser}: Props) {
   return (
-    <form onSubmit={onSubmit}>
+    <form>
       <div className="mb-3">
         <label htmlFor="name" className="form-label">Nombre</label>
         <input value={user.name} onChange={e => setUser({...user, name: e.target.value})}  type="text" className="form-control" id="name"/>
@@ -27,7 +24,6 @@ function Form({user, onSubmit, setUser}: Props) {
         <label htmlFor="email" className="form-label">Correo</label>
         <input value={user.email} onChange={e => setUser({...user, email: e.target.value})} type="email" className="form-control" id="email"/>
       </div>
-      {/* <button type="submit" className="btn btn-primary">Enviar</button> */}
     </form>
   );
 }
