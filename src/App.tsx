@@ -22,10 +22,17 @@ function App() {
     }
   ];
 
-  // Referencias para el formulario
-  const nameRef = useRef<HTMLInputElement>(null); 
-  const lastnameRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
+  const [user, setUser] = useState({
+    name: "nombre",
+    lastname: "apellido",
+    email: "email@ejemplo.com"
+  });
+
+  const userClear = {
+    name: "",
+    lastname: "",
+    email: ""
+  }
 
   const [newContact, setNewContact] = useState(contacts);
   
@@ -33,14 +40,6 @@ function App() {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault(); 
     
-    
-    // Creación de un nuevo usuario
-    const user = { 
-        name: String(nameRef.current?.value), 
-        lastname: String(lastnameRef.current?.value),
-        email: String(emailRef.current?.value)
-    };
-
     setNewContact([...newContact, user]);
     console.log(newContact)
 };
@@ -48,8 +47,9 @@ function App() {
 
   return (
     <div className="container">
-      <Form nameRef={nameRef} lastnameRef={lastnameRef} emailRef={emailRef} onSubmit={handleSubmit}/>
-      <Button onClick={handleSubmit}>Nuevo</Button>
+      <Form user={user} onSubmit={handleSubmit} setUser={setUser}/>
+      <Button onClick={handleSubmit} send={true} >Enviar</Button>
+      <Button onClick={() => setUser(userClear)}>Limpiar</Button>
       <Table data={newContact}/>
     </div>
   );
