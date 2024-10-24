@@ -1,7 +1,8 @@
 type Contact = {
   name: string,
   lastname: string,
-  email: string
+  email: string,
+  tipo: string
 };
 
 type Props = {
@@ -17,6 +18,7 @@ function Table({ data, onDelete }: Props) {
           <th scope="col">Nombre</th>
           <th scope="col">Apellido</th>
           <th scope="col">Email</th>
+          <th scope="col">Tipo</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +27,7 @@ function Table({ data, onDelete }: Props) {
             <td>{elemento.name}</td>
             <td>{elemento.lastname}</td>
             <td>{elemento.email}</td>
+            <td>{elemento.tipo}</td>
           </tr>
         ))}
       </tbody>

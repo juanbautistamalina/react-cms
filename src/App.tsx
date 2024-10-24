@@ -9,18 +9,24 @@ function App() {
       name: "Juan Bautista",
       lastname: "Malina",
       email: "malinajuanbautista@gmail.com",
+      tipo: "Familiar"
     },
     {
       name: "Simón",
       lastname: "Malina",
       email: "simonmalina@gmail.com",
+      tipo: "Familiar"
     },
     {
       name: "David",
       lastname: "Goggins",
       email: "davidgoggins@gmail.com",
+      tipo: "Amigo"
     },
   ];
+
+  // Opciones del input select
+  const options = [" -- Seleccionar tipo --", "Familiar", "Trabajo", "Amigo", "Otros"]
 
 
   // Variable para limpiar campos
@@ -28,6 +34,7 @@ function App() {
     name: "",
     lastname: "",
     email: "",
+    tipo: ""
   };
 
   
@@ -42,6 +49,8 @@ function App() {
   // Función que se ejecuta al presionar el botón de Enviar
   const handleSubmit = () => {
     setContacts([user, ...contacts]); // Agregar el nuevo usuario
+    console.log(user);
+    console.log("Tipo: ", user.tipo);
   };
 
   // Función que se ejecuta al presionar sobre los elementos de la lista (borrar items)
@@ -53,7 +62,7 @@ function App() {
 
   return (
     <div className="container">
-      <Form user={user} setUser={setUser} />
+      <Form user={user} setUser={setUser} options={options} />
       <Button onClick={handleSubmit} send={true}>Enviar</Button>
       <Button onClick={() => setUser(userClear)}>Limpiar</Button>
       <Table data={contacts} onDelete={handleDelete}/>

@@ -1,15 +1,17 @@
 type User = {
   name: string,
   lastname: string,
-  email: string
+  email: string,
+  tipo: string
 }
 
 type Props = {
   user: User
-  setUser: (user: User) => void
+  setUser: (user: User) => void,
+  options: string[]
 };
 
-function Form({user, setUser}: Props) {
+function Form({user, setUser, options}: Props) {
   return (
     <form>
       <div className="mb-3">
@@ -24,6 +26,16 @@ function Form({user, setUser}: Props) {
         <label htmlFor="email" className="form-label">Correo</label>
         <input value={user.email} onChange={e => setUser({...user, email: e.target.value})} type="email" className="form-control" id="email"/>
       </div>
+      <div className="mb-3">
+        <select onChange={e => setUser({...user, tipo: e.target.value})} className="form-select">
+          <option> -- Selecciona tipo -- </option>
+          <option value={options[1]}>Familiar</option>
+          <option value={options[2]}>Trabajo</option>
+          <option value={options[3]}>Amigo</option>
+          <option value={options[4]}>Otros</option>
+        </select>
+      </div>
+      
     </form>
   );
 }
