@@ -49,8 +49,6 @@ function App() {
   // Función que se ejecuta al presionar el botón de Enviar
   const handleSubmit = () => {
     setContacts([user, ...contacts]); // Agregar el nuevo usuario
-    console.log(user);
-    console.log("Tipo: ", user.tipo);
   };
 
   // Función que se ejecuta al presionar sobre los elementos de la lista (borrar items)

@@ -27,7 +27,8 @@ function Form({user, setUser, options}: Props) {
         <input value={user.email} onChange={e => setUser({...user, email: e.target.value})} type="email" className="form-control" id="email"/>
       </div>
       <div className="mb-3">
-        <select onChange={e => setUser({...user, tipo: e.target.value})} className="form-select">
+      <label htmlFor="tipo" className="form-label">Tipo</label>
+        <select onChange={e => setUser({...user, tipo: e.target.value})} className="form-select" id="tipo">
           <option> -- Selecciona tipo -- </option>
           <option value={options[1]}>Familiar</option>
           <option value={options[2]}>Trabajo</option>
